@@ -1,15 +1,21 @@
 package edu.fhda.cis;
 
 public class LoanManager {
-    float loanAmount, annualInterestRate, monthlyInterest, monthlyPayment, balance, monthlyInterestRate,
+    double annualInterestRate,
+            monthlyInterest,
+            balance,
+            monthlyInterestRate,
             principal = balance,
+            monthlyPayment,
             monthlyPrincipalPaid = monthlyPayment - monthlyInterest,
+            loanAmount,
             totalPayment = monthlyPayment * 12;
-    int loanTime;
+    int loanTimeInYear,
+            loanTimeInMonth = loanTimeInYear * 12;
 
     public void main() {
         loanAmount = getLoanAmount();
-        loanTime = getLoanTimeInYear();
+        loanTimeInYear = getLoanTimeInYear();
         annualInterestRate = getAnnualInterestRate();
         printToTable();
     }
@@ -18,10 +24,9 @@ public class LoanManager {
     }
 
     private void calculateMonthlyPayment() {
-        float i = monthlyInterestRate;
         monthlyInterestRate = annualInterestRate / 12;
-        int n = loanTime * 12;
-        monthlyPayment = (loanAmount * i * Math.pow(i + 1, n)) / (Math.pow(i + 1, n) - 1);
+        monthlyPayment = (loanAmount * monthlyInterestRate * Math.pow(monthlyInterestRate + 1, loanTimeInMonth))
+                / (Math.pow(monthlyInterestRate + 1, loanTimeInMonth) - 1);
     }
 
     private float getAnnualInterestRate() {
