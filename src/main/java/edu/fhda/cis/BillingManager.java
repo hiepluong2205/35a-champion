@@ -1,7 +1,5 @@
 package edu.fhda.cis;
 
-import com.sun.tools.jdeprscan.scan.Scan;
-
 import java.util.Scanner;
 
 //Assignment 0: https://deanza.instructure.com/courses/23660/assignments/678799
@@ -53,6 +51,6 @@ public class BillingManager {
 
     public int calculateTotalPrice(String productType, int intUnitCount) {
 
-        return;
+        return 0;
     }
 }
